@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMEN Economic Intelligence | Clarity for Complex Decisions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #4051b5;
+            --light: #f5f7fa;
+            --gray: #666666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--primary);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 1px solid rgba(64, 81, 181, 0.15);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(64, 81, 181, 0.06) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(64, 81, 181, 0.12) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            width: 280px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.1s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(64, 81, 181, 0.15);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-features li::before {
+            content: '→';
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--white);
+            padding: 6rem 5%;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--light);
+            padding: 3rem;
+            transition: all 0.4s;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(64, 81, 181, 0.15);
+        }
+
+        .service-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Products Section */
+        .products {
+            background: var(--primary);
+            color: var(--white);
+            padding: 6rem 5%;
+        }
+
+        .products .section-header h2,
+        .products .section-header p {
+            color: var(--white);
+        }
+
+        .products .section-header p {
+            opacity: 0.8;
+        }
+
+        .product-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 3rem;
+            border: 1px solid rgba(64, 81, 181, 0.3);
+            transition: all 0.4s;
+            color: var(--white);
+        }
+
+        .product-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .product-label {
+            color: #7c8dd8;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .product-item h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .product-item .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--white);
+        }
+
+        .product-item > p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .product-includes {
+            margin: 2rem 0;
+        }
+
+        .product-includes h4 {
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            color: #7c8dd8;
+        }
+
+        .product-includes ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .product-includes li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .product-includes li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #7c8dd8;
+        }
+
+        .product-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .product-meta-item h5 {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: #7c8dd8;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-meta-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            color: var(--white);
+        }
+
+        /* Methodology Section */
+        .methodology {
+            background: var(--light);
+            padding: 6rem 5%;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 3rem;
+            border: 1px solid rgba(64, 81, 181, 0.2);
+        }
+
+        .methodology-step {
+            background: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-right: 1px solid rgba(64, 81, 181, 0.2);
+            transition: all 0.3s;
+        }
+
+        .methodology-step:last-child {
+            border-right: none;
+        }
+
+        .methodology-step:hover {
+            background: rgba(64, 81, 181, 0.05);
+        }
+
+        .methodology-step .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .methodology-step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .methodology-step p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Leadership Section */
+        .leadership {
+            background: var(--white);
+            padding: 6rem 5%;
+        }
+
+        .leader-profile {
+            max-width: 1000px;
+            margin: 3rem auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .leader-image {
+            background: linear-gradient(135deg, var(--accent) 0%, #2d3d8f 100%);
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            color: var(--white);
+        }
+
+        .leader-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-title {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .leader-bio {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .leader-highlights {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .leader-highlights li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(64, 81, 181, 0.15);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .leader-highlights li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .client-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .client-type {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border: 1px solid rgba(64, 81, 181, 0.15);
+            transition: all 0.3s;
+        }
+
+        .client-type:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(64, 81, 181, 0.1);
+        }
+
+        .client-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .client-type h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-tagline {
+            margin-top: 4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3d8f;
+            color: var(--white);
+            padding: 2rem 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .methodology-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .methodology-step {
+                border-right: none;
+                border-bottom: 1px solid rgba(64, 81, 181, 0.2);
+            }
+
+            .methodology-step:nth-child(2n) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-logo {
+                width: 200px;
+            }
+
+            .about-grid,
+            .leader-profile {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <img src="https://images.squarespace-cdn.com/content/v1/696ec59c52323504540627fe/d347d282-e324-4602-a682-dac30f84cd3f/lumenLogonegro.png" alt="LUMEN Economic Intelligence" class="logo">
+            <ul class="nav-links">
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#leadership">Liderazgo</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://images.squarespace-cdn.com/content/v1/696ec59c52323504540627fe/90de0785-9422-4408-9fa6-50bf9d07a241/lumenLogo.png" alt="LUMEN Economic Intelligence" class="hero-logo">
+            <h1>Clarity for Complex Decisions</h1>
+            <p class="hero-subtitle">
+                Apoyamos a tomadores de decisión de alto nivel en contextos de alta incertidumbre económica, fiscal y regulatoria
+            </p>
+            <a href="#contact" class="cta-button">INICIAR CONVERSACIÓN</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header reveal">
+            <h2>Qué es LUMEN</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <h3>Economic Intelligence</h3>
+                <p>
+                    LUMEN Economic Intelligence es una firma independiente que apoya a tomadores de decisión de alto nivel en contextos de alta incertidumbre económica, fiscal y regulatoria.
+                </p>
+                <p>
+                    Ayudamos a convertir complejidad en criterio, y análisis en decisiones estratégicas claras.
+                </p>
+            </div>
+            <div class="reveal">
+                <ul class="about-features">
+                    <li>Rigor macroeconómico</li>
+                    <li>Entendimiento profundo del Estado y la política económica</li>
+                    <li>Análisis de riesgo y escenarios</li>
+                </ul>
+                <p style="margin-top: 2rem; color: var(--gray); font-style: italic;">
+                    LUMEN no produce opinión. Produce insumos para decidir.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header reveal">
+            <h2>Cómo trabajamos</h2>
+            <p>Nuestro trabajo se estructura alrededor de cuatro principios</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-number">01</div>
+                <h3>Rigor</h3>
+                <p>Análisis macroeconómico y fiscal sólido, basado en evidencia y datos.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-number">02</div>
+                <h3>Criterio</h3>
+                <p>Interpretación experta del contexto institucional, político y regulatorio.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-number">03</div>
+                <h3>Escenarios</h3>
+                <p>Identificación de riesgos, trade-offs y trayectorias plausibles.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-number">04</div>
+                <h3>Decisión</h3>
+                <p>Traducción del análisis en implicaciones concretas para la estrategia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="section-header reveal">
+            <h2>Nuestra Metodología</h2>
+        </div>
+        <div class="methodology-grid reveal">
+            <div class="methodology-step">
+                <div class="step-number">1</div>
+                <h4>Análisis</h4>
+                <p>Datos y evidencia</p>
+            </div>
+            <div class="methodology-step">
+                <div class="step-number">2</div>
+                <h4>Escenarios</h4>
+                <p>Riesgos y trayectorias</p>
+            </div>
+            <div class="methodology-step">
+                <div class="step-number">3</div>
+                <h4>Implicaciones</h4>
+                <p>Contexto estratégico</p>
+            </div>
+            <div class="methodology-step">
+                <div class="step-number">4</div>
+                <h4>Decisión</h4>
+                <p>Acción clara</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="section-header reveal">
+            <h2>Portafolio de Productos</h2>
+            <p>Soluciones diseñadas para cada desafío estratégico</p>
+        </div>
+        <div class="product-grid">
+            <!-- Product I -->
+            <div class="product-item reveal">
+                <div class="product-label">PRODUCTO I</div>
+                <h3>Economic Outlook & Risk Intelligence</h3>
+                <p class="subtitle">Lectura macroeconómica rigurosa, enfocada en riesgos y decisiones estratégicas.</p>
+                <p>
+                    Ayudamos a juntas directivas y equipos directivos a entender el entorno económico más allá del titular, identificando riesgos clave y escenarios relevantes.
+                </p>
+                <div class="product-includes">
+                    <h4>INCLUYE</h4>
+                    <ul>
+                        <li>Perspectivas macroeconómicas (Colombia y región)</li>
+                        <li>Escenarios de crecimiento, inflación y política monetaria</li>
+                        <li>Riesgos fiscales y de sostenibilidad de deuda</li>
+                    </ul>
+                </div>
+                <div class="product-meta">
+                    <div class="product-meta-item">
+                        <h5>ENTREGABLES</h5>
+                        <p>Presentaciones ejecutivas a junta directiva, briefs estratégicos, sesiones cerradas</p>
+                    </div>
+                    <div class="product-meta-item">
+                        <h5>CUÁNDO ES ÚTIL</h5>
+                        <p>Planeación estratégica, decisiones de inversión, evaluación de riesgo macro</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product II -->
+            <div class="product-item reveal">
+                <div class="product-label">PRODUCTO II</div>
+                <h3>Policy & Regulatory Intelligence</h3>
+                <p class="subtitle">Interpretación experta del Estado, la política económica y la regulación.</p>
+                <p>
+                    LUMEN ofrece análisis técnico e independiente sobre reformas, decretos, decisiones judiciales y cambios regulatorios, con énfasis en implicaciones económicas reales.
+                </p>
+                <div class="product-includes">
+                    <h4>INCLUYE</h4>
+                    <ul>
+                        <li>Análisis de reformas legales</li>
+                        <li>Evaluación de riesgo regulatorio y fiscal</li>
+                        <li>Conceptos técnicos para litigios estratégicos</li>
+                    </ul>
+                </div>
+                <div class="product-meta">
+                    <div class="product-meta-item">
+                        <h5>ENTREGABLES</h5>
+                        <p>Memorandos técnicos, conceptos escritos, sesiones de discusión con equipos legales y directivos</p>
+                    </div>
+                    <div class="product-meta-item">
+                        <h5>CUÁNDO ES ÚTIL</h5>
+                        <p>Sectores regulados, procesos legislativos o judiciales, decisiones con alta exposición institucional</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product III -->
+            <div class="product-item reveal">
+                <div class="product-label">PRODUCTO III</div>
+                <h3>Executive & Board Advisory</h3>
+                <p class="subtitle">Acompañamiento estratégico continuo para líderes y juntas directivas.</p>
+                <p>
+                    LUMEN ofrece esquemas de advisory a la medida, con acceso directo, criterio independiente y confidencialidad absoluta.
+                </p>
+                <div class="product-includes">
+                    <h4>INCLUYE</h4>
+                    <ul>
+                        <li>Advisory ejecutivo a CEOs y juntas directivas</li>
+                        <li>Suscripciones anuales de inteligencia económica</li>
+                        <li>Briefs ad hoc frente a coyunturas críticas</li>
+                    </ul>
+                </div>
+                <div class="product-meta">
+                    <div class="product-meta-item">
+                        <h5>FORMATO</h5>
+                        <p>Retainers, acceso directo, entregables personalizados</p>
+                    </div>
+                    <div class="product-meta-item">
+                        <h5>CUÁNDO ES ÚTIL</h5>
+                        <p>Contextos de alta incertidumbre, decisiones estratégicas recurrentes, liderazgo bajo presión</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="leadership">
+        <div class="section-header reveal">
+            <h2>Quién está detrás de LUMEN</h2>
+        </div>
+        <div class="leader-profile">
+            <div class="leader-image reveal">LFM</div>
+            <div class="leader-info reveal">
+                <h3>Luis Fernando Mejía</h3>
+                <p class="leader-title">Fundador & CEO – LUMEN Economic Intelligence</p>
+                <p class="leader-bio">
+                    Economista con amplia trayectoria en política económica, análisis macroeconómico y liderazgo institucional.
+                </p>
+                <ul class="leader-highlights">
+                    <li>Formación académica de élite mundial - Economista formado en la Universidad de Chicago (PhD ABD)</li>
+                    <li>Liderazgo probado - Director Ejecutivo de Fedesarrollo durante 7 años; bajo su dirección, Fedesarrollo fue ranqueado #1 en Centro y Suramérica</li>
+                    <li>Experiencia de gobierno al más alto nivel - Ex Director del Departamento Nacional de Planeación (rango ministerial)</li>
+                    <li>Impacto académico sostenido - Top 20 entre economistas más citados en Colombia (2011-2026), Top 5% en América Latina</li>
+                    <li>Liderazgo regional - Cofundador y primer vicepresidente de CEPAS (Red de Centros de Pensamiento de las Américas)</li>
+                </ul>
+                <p style="margin-top: 2rem; font-style: italic; color: var(--accent);">
+                    Independencia, rigor y criterio probado
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients">
+        <div class="section-header reveal">
+            <h2>Para quién trabajamos</h2>
+            <p>LUMEN trabaja con organizaciones y líderes que enfrentan decisiones irreversibles, estratégicas o de alto riesgo</p>
+        </div>
+        <div class="client-types">
+            <div class="client-type reveal">
+                <div class="client-icon">🏢</div>
+                <h4>Juntas directivas y alta gerencia</h4>
+            </div>
+            <div class="client-type reveal">
+                <div class="client-icon">🏦</div>
+                <h4>Bancos y entidades financieras</h4>
+            </div>
+            <div class="client-type reveal">
+                <div class="client-icon">🏭</div>
+                <h4>Grandes empresas y grupos empresariales</h4>
+            </div>
+            <div class="client-type reveal">
+                <div class="client-icon">🤝</div>
+                <h4>Gremios y asociaciones sectoriales</h4>
+            </div>
+            <div class="client-type reveal">
+                <div class="client-icon">⚖️</div>
+                <h4>Firmas legales y equipos de asuntos públicos</h4>
+            </div>
+            <div class="client-type reveal">
+                <div class="client-icon">🌎</div>
+                <h4>Organismos multilaterales y fundaciones</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="reveal">
+            <h2>Iniciar una conversación</h2>
+            <p>
+                Cada engagement se estructura según alcance y urgencia.<br>
+                La primera conversación es siempre sin costo.
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>EMAIL</h4>
+                    <a href="mailto:info@lumenei.com">info@lumenei.com</a>
+                </div>
+                <div class="contact-item">
+                    <h4>WEB</h4>
+                    <a href="https://www.lumenei.com" target="_blank">www.lumenei.com</a>
+                </div>
+            </div>
+            <p class="contact-tagline">
+                De la complejidad a la claridad
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 LUMEN Economic Intelligence. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scroll reveal script -->
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function revealOnScroll() {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100 && elementBottom > 0) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
