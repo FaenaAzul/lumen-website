@@ -481,14 +481,11 @@
         }
 
         .leader-image {
-            background: linear-gradient(135deg, var(--accent) 0%, #2d3d8f 100%);
+            width: 100%;
+            height: auto;
             aspect-ratio: 3/4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            color: var(--white);
+            object-fit: cover;
+            border: 1px solid rgba(64, 81, 181, 0.2);
         }
 
         .leader-info h3 {
@@ -913,7 +910,7 @@
             <h2>Quién está detrás de LUMEN</h2>
         </div>
         <div class="leader-profile">
-            <div class="leader-image reveal">LFM</div>
+            <img src="luis-fernando-mejia.jpg" alt="Luis Fernando Mejía" class="leader-image reveal">
             <div class="leader-info reveal">
                 <h3>Luis Fernando Mejía</h3>
                 <p class="leader-title">Fundador & CEO – LUMEN Economic Intelligence</p>
