@@ -1,1215 +1,521 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUMEN Economic Intelligence | Clarity for Complex Decisions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a1a1a;
-            --accent: #4051b5;
-            --light: #f5f7fa;
-            --gray: #666666;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Work Sans', sans-serif;
-            color: var(--primary);
-            background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            line-height: 1.2;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 5%;
-            border-bottom: 1px solid rgba(64, 81, 181, 0.15);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            height: 45px;
-            width: auto;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 400;
-            transition: color 0.3s;
-            letter-spacing: 0.02em;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Language Toggle Button */
-        .lang-toggle {
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 0.05em;
-            font-family: 'Work Sans', sans-serif;
-        }
-
-        .lang-toggle:hover {
-            background: #2d3d8f;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 5% 4rem;
-            background: linear-gradient(135deg, #ffffff 0%, rgba(64, 81, 181, 0.06) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(64, 81, 181, 0.12) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, 30px) rotate(5deg); }
-        }
-
-        .hero-content {
-            max-width: 1100px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-logo {
-            width: 280px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.1s both;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-weight: 300;
-            letter-spacing: 0.01em;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent);
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            transition: all 0.3s;
-            border: 2px solid var(--accent);
-            animation: fadeInUp 1s ease-out 0.7s both;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            color: var(--gray);
-        }
-
-        .about-features {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .about-features li {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(64, 81, 181, 0.15);
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .about-features li::before {
-            content: '→';
-            color: var(--accent);
-            font-size: 1.5rem;
-        }
-
-        /* Services Section */
-        .services {
-            background: var(--white);
-            padding: 6rem 5%;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: var(--light);
-            padding: 3rem;
-            transition: all 0.4s;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(64, 81, 181, 0.15);
-        }
-
-        .service-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--accent);
-            opacity: 0.3;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Products Section */
-        .products {
-            background: var(--primary);
-            color: var(--white);
-            padding: 6rem 5%;
-        }
-
-        .products .section-header h2,
-        .products .section-header p {
-            color: var(--white);
-        }
-
-        .products .section-header p {
-            opacity: 0.8;
-        }
-
-        .product-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .product-item {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 3rem;
-            border: 1px solid rgba(64, 81, 181, 0.3);
-            transition: all 0.4s;
-            color: var(--white);
-        }
-
-        .product-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .product-label {
-            color: #7c8dd8;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .product-item h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .product-item .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-style: italic;
-            color: var(--white);
-        }
-
-        .product-item > p {
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .product-includes {
-            margin: 2rem 0;
-        }
-
-        .product-includes h4 {
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            color: #7c8dd8;
-        }
-
-        .product-includes ul {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        .product-includes li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .product-includes li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #7c8dd8;
-        }
-
-        .product-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .product-meta-item h5 {
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            color: #7c8dd8;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-meta-item p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            color: var(--white);
-        }
-
-        /* Methodology Section */
-        .methodology {
-            background: var(--light);
-            padding: 6rem 5%;
-        }
-
-        .methodology-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            margin-top: 3rem;
-            border: 1px solid rgba(64, 81, 181, 0.2);
-        }
-
-        .methodology-step {
-            background: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-right: 1px solid rgba(64, 81, 181, 0.2);
-            transition: all 0.3s;
-        }
-
-        .methodology-step:last-child {
-            border-right: none;
-        }
-
-        .methodology-step:hover {
-            background: rgba(64, 81, 181, 0.05);
-        }
-
-        .methodology-step .step-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .methodology-step h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .methodology-step p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        /* Leadership Section */
-        .leadership {
-            background: var(--white);
-            padding: 6rem 5%;
-        }
-
-        .leader-profile {
-            max-width: 1000px;
-            margin: 3rem auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .leader-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            border: 1px solid rgba(64, 81, 181, 0.2);
-        }
-
-        .leader-placeholder {
-            background: linear-gradient(135deg, var(--accent) 0%, #2d3d8f 100%);
-            aspect-ratio: 3/4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            color: var(--white);
-        }
-
-        .leader-info h3 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .leader-title {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            letter-spacing: 0.05em;
-        }
-
-        .leader-bio {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .leader-highlights {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .leader-highlights li {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(64, 81, 181, 0.15);
-            display: flex;
-            gap: 1rem;
-        }
-
-        .leader-highlights li::before {
-            content: '✓';
-            color: var(--accent);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        /* Clients Section */
-        .clients {
-            padding: 6rem 5%;
-            background: var(--light);
-        }
-
-        .client-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .client-type {
-            text-align: center;
-            padding: 2rem;
-            background: var(--white);
-            border: 1px solid rgba(64, 81, 181, 0.15);
-            transition: all 0.3s;
-        }
-
-        .client-type:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(64, 81, 181, 0.1);
-        }
-
-        .client-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .client-type h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--accent);
-            color: var(--white);
-            padding: 6rem 5%;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 2rem;
-        }
-
-        .contact p {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            text-align: center;
-        }
-
-        .contact-item h4 {
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-
-        .contact-item a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: opacity 0.3s;
-        }
-
-        .contact-item a:hover {
-            opacity: 0.8;
-        }
-
-        .contact-tagline {
-            margin-top: 4rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            opacity: 0.85;
-        }
-
-        /* Footer */
-        footer {
-            background: #2d3d8f;
-            color: var(--white);
-            padding: 2rem 5%;
-            text-align: center;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .methodology-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .methodology-step {
-                border-right: none;
-                border-bottom: 1px solid rgba(64, 81, 181, 0.2);
-            }
-
-            .methodology-step:nth-child(2n) {
-                border-right: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 5%;
-            }
-
-            .logo {
-                height: 35px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-logo {
-                width: 200px;
-            }
-
-            .about-grid,
-            .leader-profile {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .methodology-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .product-meta {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll reveal animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hide elements by language */
-        [data-lang="en"] { display: none; }
-        body.lang-en [data-lang="es"] { display: none; }
-        body.lang-en [data-lang="en"] { display: block; }
-        body.lang-en li[data-lang="en"] { display: flex; }
-        li[data-lang="es"] { display: flex; }
-        li[data-lang="en"] { display: none; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen Economic Intelligence</title>
+<meta name="description" content="Lumen Economic Intelligence: análisis económico, de política pública y regulatorio para juntas directivas, presidencias y organizaciones que enfrentan decisiones de alto riesgo. Por Luis Fernando Mejía.">
+<meta property="og:title" content="Lumen Economic Intelligence">
+<meta property="og:description" content="Lumen no produce opinión. Produce insumos para decidir. Análisis económico independiente por Luis Fernando Mejía.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.lumenei.com/">
+<meta property="og:image" content="https://www.lumenei.com/og-image.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap">
+<style>
+  :root{
+    --navy:#14213D;
+    --navy-2:#1B2D52;
+    --indigo:#3E4095;
+    --indigo-soft:#5A5CB5;
+    --gold:#C5A572;
+    --gold-deep:#A98A55;
+    --paper:#F6F6F9;
+    --surface:#FFFFFF;
+    --surface-2:#EDEEF4;
+    --ink:#1B1E2A;
+    --ink-2:#3C4152;
+    --muted:#666B7C;
+    --line:#D8DAE3;
+    --line-strong:#B9BDCC;
+    --on-dark:#F2F4F9;
+    --on-dark-muted:#B9C0D3;
+    --link:#3E4095;
+    --focus:#C5A572;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --navy:#0B1326;
+      --navy-2:#111C36;
+      --indigo:#8A8CD9;
+      --indigo-soft:#A3A5E6;
+      --gold:#D3B77F;
+      --gold-deep:#C5A572;
+      --paper:#0F1729;
+      --surface:#182238;
+      --surface-2:#1F2B45;
+      --ink:#E8EBF2;
+      --ink-2:#C9CFDD;
+      --muted:#98A1B8;
+      --line:#2A364F;
+      --line-strong:#3A4761;
+      --on-dark:#F2F4F9;
+      --on-dark-muted:#B9C0D3;
+      --link:#A3A5E6;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --navy:#0B1326;
+    --navy-2:#111C36;
+    --indigo:#8A8CD9;
+    --indigo-soft:#A3A5E6;
+    --gold:#D3B77F;
+    --gold-deep:#C5A572;
+    --paper:#0F1729;
+    --surface:#182238;
+    --surface-2:#1F2B45;
+    --ink:#E8EBF2;
+    --ink-2:#C9CFDD;
+    --muted:#98A1B8;
+    --line:#2A364F;
+    --line-strong:#3A4761;
+    --on-dark:#F2F4F9;
+    --on-dark-muted:#B9C0D3;
+    --link:#A3A5E6;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+  body{
+    font-family:'Source Sans 3','Segoe UI',Arial,sans-serif;
+    font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Libre Baskerville',Georgia,'Times New Roman',serif}
+  h1,h2,h3{font-family:'Libre Baskerville',Georgia,'Times New Roman',serif;font-weight:700;line-height:1.15;text-wrap:balance;color:var(--ink)}
+  a{color:var(--link)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+  .eyebrow{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--indigo)}
+  .eyebrow.gold{color:var(--gold)}
+  .rule{width:40px;height:2px;background:var(--gold);margin:14px 0 22px}
+  .section{padding:88px 0}
+  .section-head{max-width:720px;margin-bottom:44px}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px)}
+  .section-head p{margin-top:14px;font-size:18px;color:var(--ink-2);max-width:62ch}
+
+  /* language */
+  html:not(.lang-en) [data-lang="en"]{display:none!important}
+  html.lang-en [data-lang="es"]{display:none!important}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .brand img{height:30px;width:auto}
+  .brand .wm{line-height:1}
+  .brand .wm b{display:block;font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:17px;letter-spacing:.01em}
+  .brand .wm span{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--indigo);margin-top:3px;font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+  .nav-links a{font-size:15px;font-weight:600;color:var(--ink-2);text-decoration:none;letter-spacing:.01em}
+  .nav-links a:hover{color:var(--indigo)}
+  .lang{font:inherit;font-size:13px;font-weight:700;letter-spacing:.12em;padding:7px 12px;border:1px solid var(--line-strong);border-radius:3px;background:transparent;color:var(--ink);cursor:pointer}
+  .lang:hover{border-color:var(--indigo);color:var(--indigo)}
+  .menu-btn{display:none;font:inherit;background:none;border:1px solid var(--line-strong);border-radius:3px;padding:7px 10px;color:var(--ink);cursor:pointer}
+  @media (max-width:860px){
+    .nav-links{display:none;position:absolute;left:0;right:0;top:66px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 16px}
+    .nav-links li{width:100%}
+    .nav-links a{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+    .nav.open .nav-links{display:flex}
+    .menu-btn{display:inline-block}
+  }
+
+  /* hero */
+  .hero{background:var(--navy);color:var(--on-dark);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     linear-gradient(90deg,transparent 0 62%,rgba(255,255,255,.025) 62% 100%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:56px;align-items:center;padding:72px 0 76px}
+  .hero h1{color:var(--on-dark);font-size:clamp(34px,4.6vw,54px);letter-spacing:-.01em;margin-top:22px}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero .lede{margin-top:22px;font-size:19px;line-height:1.55;color:var(--on-dark-muted);max-width:56ch}
+  .hero .lede b{color:var(--on-dark);font-weight:600}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{display:inline-block;font-weight:700;font-size:15px;letter-spacing:.04em;text-decoration:none;padding:14px 24px;border-radius:3px;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s}
+  .btn-gold{background:var(--gold);color:#14213D;border-color:var(--gold)}
+  .btn-gold:hover{background:#D6BA88;border-color:#D6BA88}
+  .btn-ghost{color:var(--on-dark);border-color:rgba(255,255,255,.35)}
+  .btn-ghost:hover{border-color:var(--on-dark);background:rgba(255,255,255,.06)}
+  .btn-navy{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+  .btn-navy:hover{background:var(--indigo-soft);border-color:var(--indigo-soft)}
+  .portrait{justify-self:end;width:min(100%,350px)}
+  .portrait .frame{position:relative}
+  .portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 10%;border-radius:2px;position:relative;z-index:1}
+  .portrait .frame::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);opacity:.7;border-radius:2px}
+  .portrait figcaption{margin-top:34px;font-size:14.5px;color:var(--on-dark-muted);line-height:1.45}
+  .portrait figcaption b{display:block;color:var(--on-dark);font-family:'Libre Baskerville',Georgia,serif;font-size:16px;margin-bottom:2px}
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:40px;padding:56px 0 60px}
+    .portrait{justify-self:start;width:min(100%,280px)}
+  }
+
+  /* stats ribbon */
+  .ribbon{background:var(--surface);border-bottom:1px solid var(--line)}
+  .ribbon .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:28px 28px 28px 0;border-right:1px solid var(--line)}
+  .stat + .stat{padding-left:28px}
+  .stat:last-child{border-right:0;padding-right:0}
+  .stat .n{font-family:'Libre Baskerville',Georgia,serif;font-size:36px;line-height:1;color:var(--indigo);font-weight:700;font-variant-numeric:tabular-nums}
+  .stat .n small{font-size:20px}
+  .stat .l{font-size:14.5px;line-height:1.4;color:var(--muted);margin-top:8px}
+  @media (max-width:860px){
+    .ribbon .wrap{grid-template-columns:1fr 1fr}
+    .stat{padding:22px 18px 22px 0;border-bottom:1px solid var(--line)}
+    .stat:nth-child(2n){border-right:0;padding-left:18px}
+    .stat:nth-child(3){padding-left:0}
+    .stat:nth-child(n+3){border-bottom:0}
+  }
+
+  /* thesis */
+  .thesis .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
+  .thesis blockquote{border-left:3px solid var(--gold);padding-left:24px}
+  .thesis .q{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(26px,3.2vw,36px);line-height:1.3;font-style:italic;color:var(--ink);text-wrap:balance}
+  .thesis .d{font-size:17px;color:var(--ink-2);margin-top:22px;line-height:1.55;max-width:56ch}
+  .pillars{list-style:none;display:grid;gap:0}
+  .pillars li{padding:20px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:34px 1fr;gap:14px}
+  .pillars li:last-child{border-bottom:1px solid var(--line)}
+  .pillars .k{font-family:'Libre Baskerville',Georgia,serif;color:var(--gold-deep);font-size:15px;padding-top:3px}
+  .pillars b{display:block;font-size:17px;color:var(--ink);font-weight:700}
+  .pillars p{margin-top:4px;font-size:15.5px;color:var(--ink-2);line-height:1.5}
+  @media (max-width:900px){.thesis .wrap{grid-template-columns:1fr;gap:40px}}
+
+  /* services */
+  .services{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-strong)}
+  .svc{padding:34px 32px 34px 0;border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .svc + .svc{padding-left:32px}
+  .svc:last-child{border-right:0;padding-right:0}
+  .svc .en{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--gold-deep)}
+  .svc h3{font-size:22px;margin-top:10px;line-height:1.25;min-height:2.5em}
+  .svc p{margin-top:16px;font-size:16px;line-height:1.55;color:var(--ink-2)}
+  .svc h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo);font-weight:600;margin-top:24px}
+  .svc ul{list-style:none;margin-top:8px}
+  .svc ul li{font-size:15.5px;line-height:1.45;padding:7px 0 7px 18px;border-top:1px solid var(--line);position:relative;color:var(--ink)}
+  .svc ul li::before{content:"";position:absolute;left:0;top:15px;width:8px;height:1px;background:var(--gold-deep)}
+  .svc .when{margin-top:auto;padding-top:22px;font-size:14.5px;color:var(--muted);line-height:1.5}
+  .svc .when b{color:var(--ink-2);font-weight:600}
+  @media (max-width:900px){
+    .svc-grid{grid-template-columns:1fr}
+    .svc{padding:30px 0;border-right:0;border-bottom:1px solid var(--line)}
+    .svc + .svc{padding-left:0}
+    .svc:last-child{border-bottom:0}
+    .svc h3{min-height:0}
+  }
+
+  /* about */
+  .about .wrap{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:64px;align-items:start}
+  .about .bio p{font-size:17.5px;line-height:1.6;color:var(--ink-2);margin-top:16px}
+  .about .bio p b{color:var(--ink);font-weight:600}
+  .about h2{font-size:clamp(28px,3.4vw,38px)}
+  .timeline{margin-top:34px;border-top:1px solid var(--line-strong)}
+  .tl{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .tl .y{color:var(--indigo);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .tl .t b{font-weight:600;color:var(--ink)}
+  .tl .t span{color:var(--muted)}
+  .facts{background:var(--surface);border:1px solid var(--line);padding:28px 28px 8px;border-top:3px solid var(--gold)}
+  .facts h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo);font-weight:600}
+  .facts .blk{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+  .facts .blk:last-child{border-bottom:0}
+  .facts p{font-size:15.5px;line-height:1.5;color:var(--ink-2);margin-top:8px}
+  .facts p b{color:var(--ink);font-weight:600}
+  @media (max-width:960px){.about .wrap{grid-template-columns:1fr;gap:40px}}
+
+  /* clients */
+  .clients{background:var(--surface-2);border-top:1px solid var(--line)}
+  .client-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 40px}
+  .cg h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo);font-weight:600;padding-bottom:10px;border-bottom:1px solid var(--line-strong)}
+  .cg ul{list-style:none;margin-top:10px}
+  .cg li{font-family:'Libre Baskerville',Georgia,serif;font-size:16.5px;line-height:1.35;padding:7px 0;color:var(--ink)}
+  .clients .note{margin-top:34px;font-size:14.5px;color:var(--muted);max-width:70ch}
+  @media (max-width:900px){.client-grid{grid-template-columns:1fr 1fr;gap:28px 28px}}
+  @media (max-width:560px){.client-grid{grid-template-columns:1fr}}
+
+  /* contact */
+  .contact{background:var(--navy);color:var(--on-dark)}
+  .contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:center;padding:84px 0}
+  .contact h2{color:var(--on-dark);font-size:clamp(30px,3.6vw,42px)}
+  .contact p{margin-top:18px;font-size:18px;color:var(--on-dark-muted);max-width:52ch;line-height:1.55}
+  .contact .card{border:1px solid rgba(255,255,255,.18);padding:30px 32px;border-radius:2px;background:rgba(255,255,255,.03)}
+  .contact .card dt{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:18px}
+  .contact .card dt:first-child{margin-top:0}
+  .contact .card dd{font-size:18px;margin-top:4px}
+  .contact .card dd a{color:var(--on-dark);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+  .contact .card dd a:hover{border-bottom-color:var(--gold)}
+  .contact .card dd .btn{margin-top:26px}
+  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:36px;padding:64px 0}}
+
+  footer{background:var(--navy);color:var(--on-dark-muted);border-top:1px solid rgba(255,255,255,.12)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:26px 0;font-size:14px}
+  footer img{height:68px;width:auto;opacity:.95}
+  footer a{color:var(--on-dark-muted);text-decoration:none}
+  footer a:hover{color:var(--on-dark)}
+</style>
 </head>
-<body class="lang-es">
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-content">
-            <img src="lumenLogonegro.png" alt="LUMEN Economic Intelligence" class="logo">
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#about" data-lang="es">Nosotros</a><a href="#about" data-lang="en">About</a></li>
-                    <li><a href="#services" data-lang="es">Servicios</a><a href="#services" data-lang="en">Services</a></li>
-                    <li><a href="#products" data-lang="es">Productos</a><a href="#products" data-lang="en">Products</a></li>
-                    <li><a href="#leadership" data-lang="es">Liderazgo</a><a href="#leadership" data-lang="en">Leadership</a></li>
-                    <li><a href="#contact" data-lang="es">Contacto</a><a href="#contact" data-lang="en">Contact</a></li>
-                </ul>
-                <button class="lang-toggle" onclick="toggleLanguage()">
-                    <span data-lang="es">EN</span>
-                    <span data-lang="en">ES</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Lumen Economic Intelligence">
+      <img src="img/icono.png" alt="">
+      <span class="wm"><b>Lumen</b><span>Economic Intelligence</span></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#servicios" data-lang="es">Servicios</a><a href="#servicios" data-lang="en">Services</a></li>
+      <li><a href="#quien" data-lang="es">Quién está detrás</a><a href="#quien" data-lang="en">Who is behind Lumen</a></li>
+      <li><a href="#clientes" data-lang="es">Clientes</a><a href="#clientes" data-lang="en">Clients</a></li>
+      <li><a href="#contacto" data-lang="es">Contacto</a><a href="#contacto" data-lang="en">Contact</a></li>
+    </ul>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="lang" id="lang-btn" type="button" aria-label="Cambiar idioma / Switch language"><span data-lang="es">EN</span><span data-lang="en">ES</span></button>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="Menú" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <img src="lumenLogo.png" alt="LUMEN Economic Intelligence" class="hero-logo">
-            <h1>Clarity for Complex Decisions</h1>
-            <p class="hero-subtitle" data-lang="es">
-                Apoyamos a tomadores de decisión de alto nivel en contextos de alta incertidumbre económica, fiscal y regulatoria
-            </p>
-            <p class="hero-subtitle" data-lang="en">
-                We support high-level decision-makers in contexts of high economic, fiscal, and regulatory uncertainty
-            </p>
-            <a href="#contact" class="cta-button" data-lang="es">INICIAR CONVERSACIÓN</a>
-            <a href="#contact" class="cta-button" data-lang="en">START A CONVERSATION</a>
-        </div>
-    </section>
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow gold" data-lang="es">Inteligencia económica independiente · Bogotá</div>
+      <div class="eyebrow gold" data-lang="en">Independent economic intelligence · Bogotá</div>
+      <h1 data-lang="es">Insumos rigurosos para <em>decisiones que importan.</em></h1>
+      <h1 data-lang="en">Rigorous inputs for <em>decisions that matter.</em></h1>
+      <p class="lede" data-lang="es">Análisis económico, de política pública y regulatorio para juntas directivas, presidencias y organizaciones que enfrentan decisiones de alto riesgo. <b>Independiente, a la medida y hecho por quien diseñó política económica desde el Ministerio de Hacienda, el DNP y Fedesarrollo.</b></p>
+      <p class="lede" data-lang="en">Economic, policy and regulatory analysis for boards, CEOs and organizations facing high-stakes decisions. <b>Independent, tailored, and delivered by someone who shaped economic policy from Colombia's Ministry of Finance, the National Planning Department and Fedesarrollo.</b></p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#contacto" data-lang="es">Iniciar una conversación</a>
+        <a class="btn btn-gold" href="#contacto" data-lang="en">Start a conversation</a>
+        <a class="btn btn-ghost" href="#servicios" data-lang="es">Ver servicios</a>
+        <a class="btn btn-ghost" href="#servicios" data-lang="en">See services</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <div class="frame"><img src="img/luis-fernando-mejia.jpg" alt="Luis Fernando Mejía" width="720" height="900"></div>
+      <figcaption>
+        <b>Luis Fernando Mejía</b>
+        <span data-lang="es">Fundador &amp; CEO. Exdirector ejecutivo de Fedesarrollo y exdirector general del DNP.</span>
+        <span data-lang="en">Founder &amp; CEO. Former Executive Director of Fedesarrollo and former Director General of the National Planning Department.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-header reveal">
-            <h2 data-lang="es">Qué es LUMEN</h2>
-            <h2 data-lang="en">What is LUMEN</h2>
-        </div>
-        <div class="about-grid">
-            <div class="about-text reveal">
-                <h3>Economic Intelligence</h3>
-                <p data-lang="es">
-                    LUMEN Economic Intelligence es una firma independiente que apoya a tomadores de decisión de alto nivel en contextos de alta incertidumbre económica, fiscal y regulatoria.
-                </p>
-                <p data-lang="en">
-                    LUMEN Economic Intelligence is an independent firm that supports high-level decision-makers in contexts of high economic, fiscal, and regulatory uncertainty.
-                </p>
-                <p data-lang="es">
-                    Ayudamos a convertir complejidad en criterio, y análisis en decisiones estratégicas claras.
-                </p>
-                <p data-lang="en">
-                    We help turn complexity into judgment, and analysis into clear strategic decisions.
-                </p>
-            </div>
-            <div class="reveal">
-                <ul class="about-features">
-                    <li data-lang="es">Rigor macroeconómico</li>
-                    <li data-lang="en">Macroeconomic rigor</li>
-                    <li data-lang="es">Entendimiento profundo del Estado y la política económica</li>
-                    <li data-lang="en">Deep understanding of the State and economic policy</li>
-                    <li data-lang="es">Análisis de riesgo y escenarios</li>
-                    <li data-lang="en">Risk analysis and scenarios</li>
-                </ul>
-                <p style="margin-top: 2rem; color: var(--gray); font-style: italic;" data-lang="es">
-                    LUMEN no produce opinión. Produce insumos para decidir.
-                </p>
-                <p style="margin-top: 2rem; color: var(--gray); font-style: italic;" data-lang="en">
-                    LUMEN does not produce opinion. It produces inputs for decision-making.
-                </p>
-            </div>
-        </div>
-    </section>
+<section class="ribbon" aria-label="Credenciales">
+  <div class="wrap">
+    <div class="stat"><div class="n">25<small>+</small></div><div class="l" data-lang="es">años de experiencia en academia, gobierno y empresa</div><div class="l" data-lang="en">years across academia, government and business</div></div>
+    <div class="stat"><div class="n">#1</div><div class="l" data-lang="es">think tank de Centro y Suramérica bajo su dirección (Univ. de Pennsylvania)</div><div class="l" data-lang="en">think tank in Central and South America under his leadership (Univ. of Pennsylvania)</div></div>
+    <div class="stat"><div class="n">3<small>%</small></div><div class="l" data-lang="es">top 3% de los economistas más citados de América Latina (RePEc)</div><div class="l" data-lang="en">top 3% most-cited economists in Latin America (RePEc)</div></div>
+    <div class="stat"><div class="n">17</div><div class="l" data-lang="es">juntas directivas y cuerpos de gobierno corporativo</div><div class="l" data-lang="en">boards of directors and corporate governance bodies</div></div>
+  </div>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-header reveal">
-            <h2 data-lang="es">Cómo trabajamos</h2>
-            <h2 data-lang="en">How We Work</h2>
-            <p data-lang="es">Nuestro trabajo se estructura alrededor de cuatro principios</p>
-            <p data-lang="en">Our work is structured around four principles</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <div class="service-number">01</div>
-                <h3 data-lang="es">Rigor</h3>
-                <h3 data-lang="en">Rigor</h3>
-                <p data-lang="es">Análisis macroeconómico y fiscal sólido, basado en evidencia y datos.</p>
-                <p data-lang="en">Solid macroeconomic and fiscal analysis, based on evidence and data.</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-number">02</div>
-                <h3 data-lang="es">Criterio</h3>
-                <h3 data-lang="en">Judgment</h3>
-                <p data-lang="es">Interpretación experta del contexto institucional, político y regulatorio.</p>
-                <p data-lang="en">Expert interpretation of the institutional, political, and regulatory context.</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-number">03</div>
-                <h3 data-lang="es">Escenarios</h3>
-                <h3 data-lang="en">Scenarios</h3>
-                <p data-lang="es">Identificación de riesgos, trade-offs y trayectorias plausibles.</p>
-                <p data-lang="en">Identification of risks, trade-offs, and plausible trajectories.</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-number">04</div>
-                <h3 data-lang="es">Decisión</h3>
-                <h3 data-lang="en">Decision</h3>
-                <p data-lang="es">Traducción del análisis en implicaciones concretas para la estrategia.</p>
-                <p data-lang="en">Translation of analysis into concrete implications for strategy.</p>
-            </div>
-        </div>
-    </section>
+<section class="section thesis" id="lumen">
+  <div class="wrap">
+    <blockquote>
+      <p class="q" data-lang="es">Lumen no produce opinión. Produce insumos para decidir.</p>
+      <p class="q" data-lang="en">Lumen does not produce opinion. It produces inputs for decision-making.</p>
+      <p class="d" data-lang="es">Lumen Economic Intelligence es una firma independiente de análisis económico. Trabaja con organizaciones y líderes que enfrentan decisiones irreversibles, estratégicas o de alto riesgo, y convierte complejidad en criterio y análisis en decisiones claras.</p>
+      <p class="d" data-lang="en">Lumen Economic Intelligence is an independent economic analysis firm. It works with organizations and leaders facing irreversible, strategic or high-risk decisions, turning complexity into judgment and analysis into clear decisions.</p>
+    </blockquote>
+    <ul class="pillars">
+      <li><span class="k">I</span><div><b data-lang="es">Rigor macroeconómico</b><b data-lang="en">Macroeconomic rigor</b><p data-lang="es">Datos, modelos y método académico. Cada conclusión es trazable a la evidencia que la sustenta.</p><p data-lang="en">Data, models and academic method. Every conclusion traces back to the evidence behind it.</p></div></li>
+      <li><span class="k">II</span><div><b data-lang="es">Entendimiento del Estado y la política económica</b><b data-lang="en">Understanding of the State and economic policy</b><p data-lang="es">Lectura del gobierno, el Congreso, el regulador y las cortes desde la experiencia de quien estuvo adentro.</p><p data-lang="en">A reading of government, Congress, regulators and the courts from someone who worked inside them.</p></div></li>
+      <li><span class="k">III</span><div><b data-lang="es">Riesgo, escenarios y decisión</b><b data-lang="en">Risk, scenarios and decision</b><p data-lang="es">Trayectorias plausibles y sus implicaciones concretas para la estrategia. Cada entrega responde a una pregunta específica del cliente.</p><p data-lang="en">Plausible trajectories and their concrete implications for strategy. Every deliverable answers a specific client question.</p></div></li>
+    </ul>
+  </div>
+</section>
 
-    <!-- Methodology Section -->
-    <section class="methodology">
-        <div class="section-header reveal">
-            <h2 data-lang="es">Nuestra Metodología</h2>
-            <h2 data-lang="en">Our Methodology</h2>
-        </div>
-        <div class="methodology-grid reveal">
-            <div class="methodology-step">
-                <div class="step-number">1</div>
-                <h4 data-lang="es">Análisis</h4>
-                <h4 data-lang="en">Analysis</h4>
-                <p data-lang="es">Datos y evidencia</p>
-                <p data-lang="en">Data and evidence</p>
-            </div>
-            <div class="methodology-step">
-                <div class="step-number">2</div>
-                <h4 data-lang="es">Escenarios</h4>
-                <h4 data-lang="en">Scenarios</h4>
-                <p data-lang="es">Riesgos y trayectorias</p>
-                <p data-lang="en">Risks and trajectories</p>
-            </div>
-            <div class="methodology-step">
-                <div class="step-number">3</div>
-                <h4 data-lang="es">Implicaciones</h4>
-                <h4 data-lang="en">Implications</h4>
-                <p data-lang="es">Contexto estratégico</p>
-                <p data-lang="en">Strategic context</p>
-            </div>
-            <div class="methodology-step">
-                <div class="step-number">4</div>
-                <h4 data-lang="es">Decisión</h4>
-                <h4 data-lang="en">Decision</h4>
-                <p data-lang="es">Acción clara</p>
-                <p data-lang="en">Clear action</p>
-            </div>
-        </div>
-    </section>
+<section class="section services" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-lang="es">Servicios</div><div class="eyebrow" data-lang="en">Services</div>
+      <div class="rule"></div>
+      <h2 data-lang="es">Tres líneas de servicio, un mismo estándar</h2>
+      <h2 data-lang="en">Three service lines, one standard</h2>
+      <p data-lang="es">Rigor académico, independencia total y entregas diseñadas para la decisión concreta que enfrenta el cliente. Formato, profundidad y lenguaje se adaptan a la audiencia.</p>
+      <p data-lang="en">Academic rigor, full independence and deliverables built around the specific decision the client faces. Format, depth and language adapt to the audience.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc">
+        <div class="en">Economic Outlook &amp; Risk Intelligence</div>
+        <h3 data-lang="es">Conferencias ejecutivas y perspectivas económicas</h3>
+        <h3 data-lang="en">Executive briefings and economic outlook</h3>
+        <p data-lang="es">Lectura clara de la coyuntura y de lo que viene: crecimiento, inflación, tasas de interés, tasa de cambio, situación fiscal y entorno político, traducidos en escenarios y riesgos para el negocio. Colombia y América Latina.</p>
+        <p data-lang="en">A clear reading of the present and what comes next: growth, inflation, interest rates, the exchange rate, fiscal position and political environment, translated into scenarios and risks for the business. Colombia and Latin America.</p>
+        <h4 data-lang="es">Incluye</h4><h4 data-lang="en">Includes</h4>
+        <ul>
+          <li data-lang="es">Conferencias para juntas directivas, convenciones y equipos directivos</li><li data-lang="en">Briefings for boards, conventions and management teams</li>
+          <li data-lang="es">Reportes de perspectivas a la medida</li><li data-lang="en">Tailored outlook reports</li>
+          <li data-lang="es">Sesiones privadas de preguntas y respuestas</li><li data-lang="en">Private Q&amp;A sessions</li>
+        </ul>
+        <div class="when" data-lang="es"><b>Cuándo es útil:</b> planeación estratégica, presupuesto, decisiones de inversión, evaluación de riesgo macro.</div>
+        <div class="when" data-lang="en"><b>When it is useful:</b> strategic planning, budgeting, investment decisions, macro risk assessment.</div>
+      </article>
+      <article class="svc">
+        <div class="en">Policy &amp; Regulatory Intelligence</div>
+        <h3 data-lang="es">Estudios de política pública y análisis regulatorio</h3>
+        <h3 data-lang="en">Public policy studies and regulatory analysis</h3>
+        <p data-lang="es">Cuantificación del impacto de reformas, regulaciones y decisiones de política sobre sectores, empresas y regiones. Insumos técnicos para procesos regulatorios, judiciales y de incidencia, con el rigor de quien diseñó política económica desde el Ministerio de Hacienda y el DNP.</p>
+        <p data-lang="en">Quantifying the impact of reforms, regulations and policy decisions on sectors, firms and regions. Technical inputs for regulatory, judicial and advocacy processes, with the rigor of someone who designed economic policy at the Ministry of Finance and the National Planning Department.</p>
+        <h4 data-lang="es">Incluye</h4><h4 data-lang="en">Includes</h4>
+        <ul>
+          <li data-lang="es">Estudios de impacto económico</li><li data-lang="en">Economic impact studies</li>
+          <li data-lang="es">Análisis de mercados, precios y regulación</li><li data-lang="en">Market, pricing and regulatory analysis</li>
+          <li data-lang="es">Conceptos económicos expertos</li><li data-lang="en">Expert economic opinions</li>
+          <li data-lang="es">Diagnósticos sectoriales, regionales y fiscales</li><li data-lang="en">Sectoral, regional and fiscal diagnostics</li>
+        </ul>
+        <div class="when" data-lang="es"><b>Cuándo es útil:</b> sectores regulados, procesos legislativos o judiciales, decisiones con alta exposición institucional.</div>
+        <div class="when" data-lang="en"><b>When it is useful:</b> regulated sectors, legislative or judicial processes, decisions with high institutional exposure.</div>
+      </article>
+      <article class="svc">
+        <div class="en">Executive &amp; Board Advisory</div>
+        <h3 data-lang="es">Asesoría a presidencias y juntas directivas</h3>
+        <h3 data-lang="en">Advisory to CEOs and boards</h3>
+        <p data-lang="es">Acompañamiento continuo a la alta dirección para leer el entorno macroeconómico y político, anticipar las decisiones del gobierno y del regulador, y discutir la estrategia con un interlocutor independiente que conoce las juntas desde adentro.</p>
+        <p data-lang="en">Ongoing support for senior leadership to read the macroeconomic and political environment, anticipate government and regulatory decisions, and test strategy with an independent counterpart who knows boardrooms from the inside.</p>
+        <h4 data-lang="es">Incluye</h4><h4 data-lang="en">Includes</h4>
+        <ul>
+          <li data-lang="es">Sesiones periódicas con presidencia o junta directiva</li><li data-lang="en">Periodic sessions with the CEO or the board</li>
+          <li data-lang="es">Notas de coyuntura y briefs ad hoc</li><li data-lang="en">Situation notes and ad hoc briefs</li>
+          <li data-lang="es">Asesoría estratégica en decisiones críticas</li><li data-lang="en">Strategic advice on critical decisions</li>
+        </ul>
+        <div class="when" data-lang="es"><b>Cuándo es útil:</b> contextos de alta incertidumbre, decisiones estratégicas recurrentes, liderazgo bajo presión.</div>
+        <div class="when" data-lang="en"><b>When it is useful:</b> high-uncertainty contexts, recurring strategic decisions, leadership under pressure.</div>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- Products Section -->
-    <section id="products" class="products">
-        <div class="section-header reveal">
-            <h2 data-lang="es">Portafolio de Productos</h2>
-            <h2 data-lang="en">Product Portfolio</h2>
-            <p data-lang="es">Soluciones diseñadas para cada desafío estratégico</p>
-            <p data-lang="en">Solutions designed for every strategic challenge</p>
-        </div>
-        <div class="product-grid">
-            <!-- Product I -->
-            <div class="product-item reveal">
-                <div class="product-label" data-lang="es">PRODUCTO I</div>
-                <div class="product-label" data-lang="en">PRODUCT I</div>
-                <h3>Economic Outlook & Risk Intelligence</h3>
-                <p class="subtitle" data-lang="es">Lectura macroeconómica rigurosa, enfocada en riesgos y decisiones estratégicas.</p>
-                <p class="subtitle" data-lang="en">Rigorous macroeconomic reading, focused on risks and strategic decisions.</p>
-                <p data-lang="es">
-                    Ayudamos a juntas directivas y equipos directivos a entender el entorno económico más allá del titular, identificando riesgos clave y escenarios relevantes.
-                </p>
-                <p data-lang="en">
-                    We help boards of directors and management teams understand the economic environment beyond the headline, identifying key risks and relevant scenarios.
-                </p>
-                <div class="product-includes">
-                    <h4 data-lang="es">INCLUYE</h4>
-                    <h4 data-lang="en">INCLUDES</h4>
-                    <ul>
-                        <li data-lang="es">Perspectivas macroeconómicas (Colombia y región)</li>
-                        <li data-lang="en">Macroeconomic perspectives (Colombia and region)</li>
-                        <li data-lang="es">Escenarios de crecimiento, inflación y política monetaria</li>
-                        <li data-lang="en">Growth, inflation, and monetary policy scenarios</li>
-                        <li data-lang="es">Riesgos fiscales y de sostenibilidad de deuda</li>
-                        <li data-lang="en">Fiscal and debt sustainability risks</li>
-                    </ul>
-                </div>
-                <div class="product-meta">
-                    <div class="product-meta-item">
-                        <h5 data-lang="es">ENTREGABLES</h5>
-                        <h5 data-lang="en">DELIVERABLES</h5>
-                        <p data-lang="es">Presentaciones ejecutivas a junta directiva, briefs estratégicos, sesiones cerradas</p>
-                        <p data-lang="en">Executive board presentations, strategic briefs, closed sessions</p>
-                    </div>
-                    <div class="product-meta-item">
-                        <h5 data-lang="es">CUÁNDO ES ÚTIL</h5>
-                        <h5 data-lang="en">WHEN IT'S USEFUL</h5>
-                        <p data-lang="es">Planeación estratégica, decisiones de inversión, evaluación de riesgo macro</p>
-                        <p data-lang="en">Strategic planning, investment decisions, macro risk assessment</p>
-                    </div>
-                </div>
-            </div>
+<section class="section about" id="quien">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" data-lang="es">Quién está detrás</div><div class="eyebrow" data-lang="en">Who is behind Lumen</div>
+      <div class="rule"></div>
+      <h2>Luis Fernando Mejía</h2>
+      <div class="bio">
+        <p data-lang="es">Economista con <b>más de 25 años</b> en la frontera entre la academia, la política pública y la alta dirección empresarial. Formado en la <b>Universidad de Chicago</b>, donde estudió con Gary Becker, Robert Lucas y Thomas Sargent, Premios Nobel de Economía, ha ocupado los cargos técnicos de mayor responsabilidad en la economía colombiana: <b>Director de Política Macroeconómica del Ministerio de Hacienda</b> y <b>Director General del Departamento Nacional de Planeación</b>, con rango ministerial, desde donde participó en el diseño de reformas estructurales y coordinó técnicamente el acceso de Colombia a la OCDE.</p>
+        <p data-lang="en">An economist with <b>more than 25 years</b> at the frontier of academia, public policy and senior corporate leadership. Trained at the <b>University of Chicago</b>, where he studied under Nobel laureates Gary Becker, Robert Lucas and Thomas Sargent, he has held the most senior technical positions in Colombia's economic policy: <b>Director of Macroeconomic Policy at the Ministry of Finance</b> and <b>Director General of the National Planning Department</b>, a cabinet-rank post from which he helped design structural reforms and led the technical coordination of Colombia's accession to the OECD.</p>
+        <p data-lang="es">Durante siete años dirigió <b>Fedesarrollo</b>, el período más largo en los 55 años de la institución, y la llevó por primera vez al puesto #1 entre los centros de pensamiento de Centro y Suramérica. Investigador del Banco de la República y del Banco Interamericano de Desarrollo en Washington, es autor de 46 publicaciones académicas y de política pública, profesor de la Universidad de los Andes y columnista de <b>El Tiempo</b> y <b>Americas Quarterly</b>.</p>
+        <p data-lang="en">For seven years he led <b>Fedesarrollo</b>, the longest tenure in the institution's 55-year history, and took it for the first time to the #1 position among think tanks in Central and South America. A former researcher at Colombia's central bank and at the Inter-American Development Bank in Washington, he is the author of 46 academic and policy publications, a professor at Universidad de los Andes, and a columnist for <b>El Tiempo</b> and <b>Americas Quarterly</b>.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl"><div class="y">2026</div><div class="t"><b data-lang="es">Fundador &amp; CEO,</b><b data-lang="en">Founder &amp; CEO,</b> <span>Lumen Economic Intelligence</span></div></div>
+        <div class="tl"><div class="y">2018-2025</div><div class="t"><b data-lang="es">Director Ejecutivo,</b><b data-lang="en">Executive Director,</b> <span>Fedesarrollo</span></div></div>
+        <div class="tl"><div class="y">2017-2018</div><div class="t"><b data-lang="es">Director General (rango ministerial),</b><b data-lang="en">Director General (cabinet rank),</b> <span data-lang="es">Departamento Nacional de Planeación</span><span data-lang="en">National Planning Department (DNP)</span></div></div>
+        <div class="tl"><div class="y">2014-2017</div><div class="t"><b data-lang="es">Subdirector General,</b><b data-lang="en">Deputy Director General,</b> <span data-lang="es">Departamento Nacional de Planeación</span><span data-lang="en">National Planning Department (DNP)</span></div></div>
+        <div class="tl"><div class="y">2012-2014</div><div class="t"><b data-lang="es">Director de Política Macroeconómica,</b><b data-lang="en">Director of Macroeconomic Policy,</b> <span data-lang="es">Ministerio de Hacienda y Crédito Público</span><span data-lang="en">Ministry of Finance and Public Credit</span></div></div>
+        <div class="tl"><div class="y">2009-2012</div><div class="t"><b data-lang="es">Investigador,</b><b data-lang="en">Researcher,</b> <span>Banco de la República</span></div></div>
+        <div class="tl"><div class="y">2001-2003</div><div class="t"><b>Research Fellow,</b> <span data-lang="es">Banco Interamericano de Desarrollo, Washington</span><span data-lang="en">Inter-American Development Bank, Washington</span></div></div>
+      </div>
+    </div>
+    <aside class="facts">
+      <div class="blk">
+        <h4 data-lang="es">Formación</h4><h4 data-lang="en">Education</h4>
+        <p data-lang="es"><b>Universidad de Chicago.</b> Maestría y estudios doctorales en Economía.</p>
+        <p data-lang="en"><b>University of Chicago.</b> MA and doctoral studies in Economics.</p>
+        <p data-lang="es"><b>Universidad de los Andes.</b> Economista y Magíster en Economía.</p>
+        <p data-lang="en"><b>Universidad de los Andes.</b> BA and MA in Economics.</p>
+      </div>
+      <div class="blk">
+        <h4 data-lang="es">Juntas directivas actuales</h4><h4 data-lang="en">Current board seats</h4>
+        <p><b>EPS Sanitas</b> (Grupo Keralty)</p>
+        <p><b>Jerónimo Martins Colombia</b> (Ara)</p>
+      </div>
+      <div class="blk">
+        <h4 data-lang="es">Juntas y gobierno corporativo previos</h4><h4 data-lang="en">Previous boards and governance roles</h4>
+        <p data-lang="es">Corficolombiana, Banco Agrario, Agencia Nacional de Infraestructura, Agencia Nacional Minera, CREG, CRC, XM y Acueducto de Bogotá. Gobernador Alterno ante el BID, el Banco Mundial y CAF.</p>
+        <p data-lang="en">Corficolombiana, Banco Agrario, National Infrastructure Agency, National Mining Agency, CREG, CRC, XM and Bogotá's water utility. Alternate Governor at the IDB, the World Bank and CAF.</p>
+      </div>
+      <div class="blk">
+        <h4 data-lang="es">Reconocimientos</h4><h4 data-lang="en">Recognition</h4>
+        <p data-lang="es"><b>Forbes, 2023:</b> uno de los 30 economistas más influyentes de Colombia.</p>
+        <p data-lang="en"><b>Forbes, 2023:</b> one of Colombia's 30 most influential economists.</p>
+        <p data-lang="es"><b>CEPAS:</b> cofundador y primer vicepresidente de la Red de Centros de Pensamiento de las Américas.</p>
+        <p data-lang="en"><b>CEPAS:</b> co-founder and first vice president of the Network of Think Tanks of the Americas.</p>
+      </div>
+    </aside>
+  </div>
+</section>
 
-            <!-- Product II -->
-            <div class="product-item reveal">
-                <div class="product-label" data-lang="es">PRODUCTO II</div>
-                <div class="product-label" data-lang="en">PRODUCT II</div>
-                <h3>Policy & Regulatory Intelligence</h3>
-                <p class="subtitle" data-lang="es">Interpretación experta del Estado, la política económica y la regulación.</p>
-                <p class="subtitle" data-lang="en">Expert interpretation of the State, economic policy, and regulation.</p>
-                <p data-lang="es">
-                    LUMEN ofrece análisis técnico e independiente sobre reformas, decretos, decisiones judiciales y cambios regulatorios, con énfasis en implicaciones económicas reales.
-                </p>
-                <p data-lang="en">
-                    LUMEN offers technical and independent analysis of reforms, decrees, judicial decisions, and regulatory changes, with emphasis on real economic implications.
-                </p>
-                <div class="product-includes">
-                    <h4 data-lang="es">INCLUYE</h4>
-                    <h4 data-lang="en">INCLUDES</h4>
-                    <ul>
-                        <li data-lang="es">Análisis de reformas legales</li>
-                        <li data-lang="en">Legal reform analysis</li>
-                        <li data-lang="es">Evaluación de riesgo regulatorio y fiscal</li>
-                        <li data-lang="en">Regulatory and fiscal risk assessment</li>
-                        <li data-lang="es">Conceptos técnicos para litigios estratégicos</li>
-                        <li data-lang="en">Technical concepts for strategic litigation</li>
-                    </ul>
-                </div>
-                <div class="product-meta">
-                    <div class="product-meta-item">
-                        <h5 data-lang="es">ENTREGABLES</h5>
-                        <h5 data-lang="en">DELIVERABLES</h5>
-                        <p data-lang="es">Memorandos técnicos, conceptos escritos, sesiones de discusión con equipos legales y directivos</p>
-                        <p data-lang="en">Technical memos, written concepts, discussion sessions with legal and management teams</p>
-                    </div>
-                    <div class="product-meta-item">
-                        <h5 data-lang="es">CUÁNDO ES ÚTIL</h5>
-                        <h5 data-lang="en">WHEN IT'S USEFUL</h5>
-                        <p data-lang="es">Sectores regulados, procesos legislativos o judiciales, decisiones con alta exposición institucional</p>
-                        <p data-lang="en">Regulated sectors, legislative or judicial processes, decisions with high institutional exposure</p>
-                    </div>
-                </div>
-            </div>
+<section class="section clients" id="clientes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-lang="es">Clientes</div><div class="eyebrow" data-lang="en">Clients</div>
+      <div class="rule"></div>
+      <h2 data-lang="es">Organizaciones que han confiado en Lumen en 2026</h2>
+      <h2 data-lang="en">Organizations that have trusted Lumen in 2026</h2>
+      <p data-lang="es">Juntas directivas, presidencias, gremios, firmas legales y organismos multilaterales en Colombia y América Latina.</p>
+      <p data-lang="en">Boards, CEOs, business associations, law firms and multilateral organizations in Colombia and Latin America.</p>
+    </div>
+    <div class="client-grid">
+      <div class="cg"><h4 data-lang="es">Sector financiero y seguros</h4><h4 data-lang="en">Financial services and insurance</h4><ul><li>Seguros Bolívar</li><li>JP Morgan</li><li>Brinks</li><li>Analfe</li></ul></div>
+      <div class="cg"><h4 data-lang="es">Salud y farmacéutico</h4><h4 data-lang="en">Health and pharmaceuticals</h4><ul><li>Roche</li><li>Sanofi</li><li>Abbott</li></ul></div>
+      <div class="cg"><h4 data-lang="es">Industria, consumo y comercio</h4><h4 data-lang="en">Industry, consumer goods and retail</h4><ul><li>Bavaria</li><li>Rockwell Automation</li><li>Fenalco</li><li>Organización G&amp;J</li><li>Continautos</li><li>Aconauto</li></ul></div>
+      <div class="cg"><h4 data-lang="es">Construcción y servicios públicos</h4><h4 data-lang="en">Construction and utilities</h4><ul><li>Conconcreto</li><li>Camacol</li><li>Camacol Bogotá y Cundinamarca</li><li>Andesco</li><li>Fedelonjas</li></ul></div>
+      <div class="cg"><h4 data-lang="es">Energía y minería</h4><h4 data-lang="en">Energy and mining</h4><ul><li>Acolgen</li><li>Asociación Colombiana de Minería</li></ul></div>
+      <div class="cg"><h4 data-lang="es">Legal, multilateral y regional</h4><h4 data-lang="en">Legal, multilateral and regional</h4><ul><li>Pérez-Llorca</li><li data-lang="es">Banco Interamericano de Desarrollo</li><li data-lang="en">Inter-American Development Bank</li><li>Universidad de los Andes</li><li>Fundación Barco</li><li>Cámara de Comercio de Neiva</li></ul></div>
+    </div>
+  </div>
+</section>
 
-            <!-- Product III -->
-            <div class="product-item reveal">
-                <div class="product-label" data-lang="es">PRODUCTO III</div>
-                <div class="product-label" data-lang="en">PRODUCT III</div>
-                <h3>Executive & Board Advisory</h3>
-                <p class="subtitle" data-lang="es">Acompañamiento estratégico continuo para líderes y juntas directivas.</p>
-                <p class="subtitle" data-lang="en">Continuous strategic support for leaders and boards of directors.</p>
-                <p data-lang="es">
-                    LUMEN ofrece esquemas de advisory a la medida, con acceso directo, criterio independiente y confidencialidad absoluta.
-                </p>
-                <p data-lang="en">
-                    LUMEN offers customized advisory schemes, with direct access, independent judgment, and absolute confidentiality.
-                </p>
-                <div class="product-includes">
-                    <h4 data-lang="es">INCLUYE</h4>
-                    <h4 data-lang="en">INCLUDES</h4>
-                    <ul>
-                        <li data-lang="es">Advisory ejecutivo a CEOs y juntas directivas</li>
-                        <li data-lang="en">Executive advisory to CEOs and boards</li>
-                        <li data-lang="es">Suscripciones anuales de inteligencia económica</li>
-                        <li data-lang="en">Annual economic intelligence subscriptions</li>
-                        <li data-lang="es">Briefs ad hoc frente a coyunturas críticas</li>
-                        <li data-lang="en">Ad hoc briefs for critical situations</li>
-                    </ul>
-                </div>
-                <div class="product-meta">
-                    <div class="product-meta-item">
-                        <h5 data-lang="es">FORMATO</h5>
-                        <h5 data-lang="en">FORMAT</h5>
-                        <p data-lang="es">Retainers, acceso directo, entregables personalizados</p>
-                        <p data-lang="en">Retainers, direct access, customized deliverables</p>
-                    </div>
-                    <div class="product-meta-item">
-                        <h5 data-lang="es">CUÁNDO ES ÚTIL</h5>
-                        <h5 data-lang="en">WHEN IT'S USEFUL</h5>
-                        <p data-lang="es">Contextos de alta incertidumbre, decisiones estratégicas recurrentes, liderazgo bajo presión</p>
-                        <p data-lang="en">High uncertainty contexts, recurring strategic decisions, leadership under pressure</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow gold" data-lang="es">Contacto</div><div class="eyebrow gold" data-lang="en">Contact</div>
+      <h2 data-lang="es" style="margin-top:18px">Iniciemos una conversación</h2>
+      <h2 data-lang="en" style="margin-top:18px">Let's start a conversation</h2>
+      <p data-lang="es">Cada trabajo se estructura según su alcance y urgencia: una conferencia, un estudio, un concepto o un acompañamiento continuo. La primera conversación es siempre sin costo.</p>
+      <p data-lang="en">Every engagement is structured around its scope and urgency: a briefing, a study, an expert opinion or ongoing advisory. The first conversation is always free of charge.</p>
+    </div>
+    <dl class="card">
+      <dt data-lang="es">Correo</dt><dt data-lang="en">Email</dt>
+      <dd><a href="mailto:info@lumenei.com">info@lumenei.com</a></dd>
+      <dt>X</dt>
+      <dd><a href="https://x.com/LuisFerMejia" target="_blank" rel="noopener">@LuisFerMejia</a></dd>
+      <dt data-lang="es">Sede</dt><dt data-lang="en">Based in</dt>
+      <dd>Bogotá, Colombia</dd>
+      <dd><a class="btn btn-gold" href="mailto:info@lumenei.com?subject=Conversaci%C3%B3n%20con%20Lumen" data-lang="es">Escribir a Lumen</a>
+      <a class="btn btn-gold" href="mailto:info@lumenei.com?subject=Conversation%20with%20Lumen" data-lang="en">Write to Lumen</a></dd>
+    </dl>
+  </div>
+</section>
+</main>
 
-    <!-- Leadership Section -->
-    <section id="leadership" class="leadership">
-        <div class="section-header reveal">
-            <h2 data-lang="es">Quién está detrás de LUMEN</h2>
-            <h2 data-lang="en">Who is Behind LUMEN</h2>
-        </div>
-        <div class="leader-profile">
-            <img src="luis-fernando-mejia.png" alt="Luis Fernando Mejía" class="leader-image reveal">
+<footer>
+  <div class="wrap">
+    <img src="img/logo-blanco.png" alt="Lumen Economic Intelligence, by Luis Fernando Mejía">
+    <div data-lang="es">© 2026 Lumen Economic Intelligence S.A.S. · Bogotá, Colombia · <a href="https://www.lumenei.com">lumenei.com</a></div>
+    <div data-lang="en">© 2026 Lumen Economic Intelligence S.A.S. · Bogotá, Colombia · <a href="https://www.lumenei.com">lumenei.com</a></div>
+  </div>
+</footer>
 
-            <div class="leader-info reveal">
-                <h3>Luis Fernando Mejía</h3>
-                <p class="leader-title" data-lang="es">Fundador & CEO – LUMEN Economic Intelligence</p>
-                <p class="leader-title" data-lang="en">Founder & CEO – LUMEN Economic Intelligence</p>
-                <p class="leader-bio" data-lang="es">
-                    Economista con amplia trayectoria en política económica, análisis macroeconómico y liderazgo institucional.
-                </p>
-                <p class="leader-bio" data-lang="en">
-                    Economist with extensive experience in economic policy, macroeconomic analysis, and institutional leadership.
-                </p>
-                <ul class="leader-highlights">
-                    <li data-lang="es">Formación académica de élite mundial - Economista formado en la Universidad de Chicago (PhD ABD)</li>
-                    <li data-lang="en">World-class academic training - Economist trained at the University of Chicago (PhD ABD)</li>
-                    <li data-lang="es">Liderazgo probado - Director Ejecutivo de Fedesarrollo durante 7 años; bajo su dirección, Fedesarrollo fue ranqueado #1 en Centro y Suramérica</li>
-                    <li data-lang="en">Proven leadership - Executive Director of Fedesarrollo for 7 years; under his direction, Fedesarrollo was ranked #1 in Central and South America</li>
-                    <li data-lang="es">Experiencia de gobierno al más alto nivel - Ex Director del Departamento Nacional de Planeación (rango ministerial)</li>
-                    <li data-lang="en">High-level government experience - Former Director of the National Planning Department (ministerial rank)</li>
-                    <li data-lang="es">Impacto académico sostenido - Top 20 entre economistas más citados en Colombia (2011-2026), Top 5% en América Latina</li>
-                    <li data-lang="en">Sustained academic impact - Top 20 among most cited economists in Colombia (2011-2026), Top 5% in Latin America</li>
-                    <li data-lang="es">Liderazgo regional - Cofundador y primer vicepresidente de CEPAS (Red de Centros de Pensamiento de las Américas)</li>
-                    <li data-lang="en">Regional leadership - Co-founder and first vice president of CEPAS (Network of Think Tanks of the Americas)</li>
-                </ul>
-                <p style="margin-top: 2rem; font-style: italic; color: var(--accent);" data-lang="es">
-                    Independencia, rigor y criterio probado
-                </p>
-                <p style="margin-top: 2rem; font-style: italic; color: var(--accent);" data-lang="en">
-                    Independence, rigor, and proven judgment
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section id="clients" class="clients">
-        <div class="section-header reveal">
-            <h2 data-lang="es">Para quién trabajamos</h2>
-            <h2 data-lang="en">Who We Work For</h2>
-            <p data-lang="es">LUMEN trabaja con organizaciones y líderes que enfrentan decisiones irreversibles, estratégicas o de alto riesgo</p>
-            <p data-lang="en">LUMEN works with organizations and leaders facing irreversible, strategic, or high-risk decisions</p>
-        </div>
-        <div class="client-types">
-            <div class="client-type reveal">
-                <div class="client-icon">🏢</div>
-                <h4 data-lang="es">Juntas directivas y alta gerencia</h4>
-                <h4 data-lang="en">Boards and senior management</h4>
-            </div>
-            <div class="client-type reveal">
-                <div class="client-icon">🏦</div>
-                <h4 data-lang="es">Bancos y entidades financieras</h4>
-                <h4 data-lang="en">Banks and financial institutions</h4>
-            </div>
-            <div class="client-type reveal">
-                <div class="client-icon">🏭</div>
-                <h4 data-lang="es">Grandes empresas y grupos empresariales</h4>
-                <h4 data-lang="en">Large companies and business groups</h4>
-            </div>
-            <div class="client-type reveal">
-                <div class="client-icon">🤝</div>
-                <h4 data-lang="es">Gremios y asociaciones sectoriales</h4>
-                <h4 data-lang="en">Trade associations and sectoral organizations</h4>
-            </div>
-            <div class="client-type reveal">
-                <div class="client-icon">⚖️</div>
-                <h4 data-lang="es">Firmas legales y equipos de asuntos públicos</h4>
-                <h4 data-lang="en">Law firms and public affairs teams</h4>
-            </div>
-            <div class="client-type reveal">
-                <div class="client-icon">🌎</div>
-                <h4 data-lang="es">Organismos multilaterales y fundaciones</h4>
-                <h4 data-lang="en">Multilateral organizations and foundations</h4>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="reveal">
-            <h2 data-lang="es">Iniciar una conversación</h2>
-            <h2 data-lang="en">Start a Conversation</h2>
-            <p data-lang="es">
-                Cada engagement se estructura según alcance y urgencia.<br>
-                La primera conversación es siempre sin costo.
-            </p>
-            <p data-lang="en">
-                Each engagement is structured according to scope and urgency.<br>
-                The first conversation is always free of charge.
-            </p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <h4>EMAIL</h4>
-                    <a href="mailto:info@lumenei.com">info@lumenei.com</a>
-                </div>
-                <div class="contact-item">
-                    <h4>WEB</h4>
-                    <a href="https://www.lumenei.com" target="_blank">www.lumenei.com</a>
-                </div>
-            </div>
-            <p class="contact-tagline" data-lang="es">
-                De la complejidad a la claridad
-            </p>
-            <p class="contact-tagline" data-lang="en">
-                From complexity to clarity
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p data-lang="es">&copy; 2026 LUMEN Economic Intelligence. Todos los derechos reservados.</p>
-        <p data-lang="en">&copy; 2026 LUMEN Economic Intelligence. All rights reserved.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Language toggle function
-        function toggleLanguage() {
-            const body = document.body;
-            const currentLang = body.classList.contains('lang-en') ? 'en' : 'es';
-            
-            if (currentLang === 'es') {
-                body.classList.remove('lang-es');
-                body.classList.add('lang-en');
-                localStorage.setItem('lang', 'en');
-            } else {
-                body.classList.remove('lang-en');
-                body.classList.add('lang-es');
-                localStorage.setItem('lang', 'es');
-            }
-        }
-
-        // Load saved language preference
-        window.addEventListener('load', function() {
-            const savedLang = localStorage.getItem('lang');
-            if (savedLang === 'en') {
-                document.body.classList.remove('lang-es');
-                document.body.classList.add('lang-en');
-            }
-        });
-
-        // Scroll reveal animation
-        const reveals = document.querySelectorAll('.reveal');
-        
-        function revealOnScroll() {
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementBottom = element.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100 && elementBottom > 0) {
-                    element.classList.add('active');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    if(l==='en'){root.classList.add('lang-en');root.setAttribute('lang','en');}
+    else{root.classList.remove('lang-en');root.setAttribute('lang','es');}
+    try{localStorage.setItem('lumen-lang',l);}catch(e){}
+  }
+  var saved=null;
+  try{saved=localStorage.getItem('lumen-lang');}catch(e){}
+  var q=new URLSearchParams(location.search).get('lang');
+  if(q==='en'||q==='es'){setLang(q);}
+  else if(saved==='en'||saved==='es'){setLang(saved);}
+  document.getElementById('lang-btn').addEventListener('click',function(){
+    setLang(root.classList.contains('lang-en')?'es':'en');
+  });
+  var nav=document.getElementById('nav'), mb=document.getElementById('menu-btn');
+  mb.addEventListener('click',function(){
+    var open=nav.classList.toggle('open'); mb.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.querySelectorAll('#nav-links a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');});});
+})();
+</script>
 </body>
 </html>
